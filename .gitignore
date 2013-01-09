@@ -3,6 +3,9 @@
 *.ipr
 *.iws
 atlassian-ide-plugin.xml
+.gradle
+build
+target
 
 # Package Files #
 *.jar
