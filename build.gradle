@@ -9,6 +9,22 @@ dependencies {
     testCompile (
             'junit:junit:4.11',
             'info.cukes:cucumber-java:1.1.1',
-            'info.cukes:cucumber-junit:1.1.1'
+            'info.cukes:cucumber-junit:1.1.1',
+            'org.testng:testng:6.+'
     )
+}
+
+task junitTest(type: Test, dependsOn: testClasses) {
+    include '**/MySuite.*'
+    testReportDir = file("$testReportDir/junit")
+}
+
+task cukeTest(type: Test, dependsOn: testClasses) {
+    include '**/CukeRunner.*'
+    testReportDir = file("$testReportDir/cuke")
+}
+
+task ngTest(type: Test, dependsOn: testClasses) {
+    useTestNG()
+    testReportDir = file("$testReportDir/testng")
 }
